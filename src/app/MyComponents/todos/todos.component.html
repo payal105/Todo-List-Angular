@@ -1,0 +1,13 @@
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<h3 class="text-center">Your Todo List</h3>
+
+<div class="container" *ngIf="this.todos.length === 0; else elseBlock">No Todos To Display</div>
+<ng-template #elseBlock>
+
+    <div class="container mb-3" *ngFor="let todo of todos">
+        <h5 [ngClass]="{'active': !todo.active}">{{todo.title}}</h5>
+        <p>{{todo.desc}}</p>
+        <button class="btn btn-sm btn-success mx-3" (click)="done(todo)">Mark as done</button>
+        <button class="btn btn-sm btn-danger" (click)="onClick(todo)">Delete</button>
+    </div>
+</ng-template>
